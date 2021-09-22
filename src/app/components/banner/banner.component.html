@@ -1,0 +1,16 @@
+<header *ngIf="banner" class="banner">
+
+  
+    <div class="banner-content">
+        <div>   <h1 class="banner-title">{{banner.name}}</h1></div>
+     
+        <button class="btn " >Check</button>
+        <h1 class="banner-description">
+            {{banner.overview | slice:0:150}} ...
+        </h1>
+    </div>
+   
+ 
+    
+   
+</header>

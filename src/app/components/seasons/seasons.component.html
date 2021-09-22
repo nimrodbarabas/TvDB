@@ -1,0 +1,14 @@
+<div *ngIf="season" class="season">
+   
+    <div class="header">
+      <h2>{{season.name}} </h2>
+      <img  src="../../../assets/expand.svg" (click)="toggleShowEpisodes()">
+    </div>
+    <p>{{season.air_date}}</p>
+    <div class="episodes" *ngIf="showEpisodes">
+      <app-episode 
+      *ngFor = "let episode of episodes"
+      [episode] = "episode"
+      ></app-episode>
+    </div>
+</div>

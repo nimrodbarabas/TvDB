@@ -1,0 +1,23 @@
+.season {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header img {
+  cursor: pointer;
+}
+
+.season p {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .season {
+    margin-left: 0px;
+  }
+}
