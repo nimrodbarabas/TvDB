@@ -1,34 +1,80 @@
-<div *ngIf="informations" class="main">
-    <div class="header">  
-        <img  class="header-img" src="{{baseUrl}}{{informations.poster_path}}"/>
-        <div class="header-text">
-            <h1 *ngIf="informations.name">{{informations.name}}<span >({{informations.first_air_date | slice : 0:4 }}- {{informations.last_air_date | slice : 0:4}})</span></h1>
-            <h1 *ngIf="informations.title">{{informations.title}}<span >({{informations.release_date}})</span></h1>
-            <p class="text-genre">{{genre | slice :-100}} </p>
-            <div class="status">
-                <h2>Status : </h2>
-                <h2 [ngStyle]="{'color':'grey'}">{{informations.status}}</h2>
-            </div>
-            <div class="nextEpisode" >
-                <h2>Next Episode : </h2>
-                <h2 [ngStyle]="{'color':'grey'}" *ngIf="informations.next_episode_to_air" >{{informations.next_episode_to_air.air_date }}</h2>
-                <h2 *ngIf="!informations.next_episode_to_air" [ngStyle]="{'color':'grey'}">Unknown</h2>
-            </div>
-            <div class="overview">
-                <div class="overview-expand"><h2>Overview </h2>
-                    <img src="../../../assets/expand.svg" (click)="toggleShowOverview()">
-                </div>
-                <p class="overview-p" *ngIf="showOverview">{{informations.overview}}</p>
-            </div>
+<div
+  *ngIf="informations"
+  [style.position]="modalShow ? 'fixed ' : 'relative'"
+  class="main"
+>
+  <div class="header">
+    <img
+      *ngIf="informations.poster_path"
+      class="header-img"
+      src="{{ baseUrl }}{{ informations.poster_path }}"
+    />
+    <div class="header-text">
+      <h1 *ngIf="informations.name" class="title">
+        {{ informations.name
+        }}<span class="date"
+          >({{ informations.first_air_date | slice: 0:4 }} -
+          {{ informations.last_air_date | slice: 0:4 }})</span
+        >
+      </h1>
+      <h1 *ngIf="informations.title">
+        {{ informations.title }}<span>({{ informations.release_date }})</span>
+      </h1>
+      <div class="container-genre">
+        <span
+          (click)="selectGenre(genre)"
+          *ngFor="let genre of genres"
+          class="text-genre"
+        >
+          {{ genre.name }}
+        </span>
+      </div>
+
+      <div class="rating">
+        <h2>Rating :</h2>
+        <h2 [ngStyle]="{ color: 'grey' }">{{ informations.vote_average }}</h2>
+      </div>
+      <div class="status">
+        <h2>Status :</h2>
+        <h2 [ngStyle]="{ color: 'grey' }">{{ informations.status }}</h2>
+      </div>
+      <div class="nextEpisode">
+        <h2>Next Episode :</h2>
+        <h2
+          [ngStyle]="{ color: 'grey' }"
+          *ngIf="informations.next_episode_to_air"
+        >
+          {{ informations.next_episode_to_air.air_date }}
+        </h2>
+        <h2
+          *ngIf="!informations.next_episode_to_air"
+          [ngStyle]="{ color: 'grey' }"
+        >
+          Unknown
+        </h2>
+      </div>
+      <div class="overview">
+        <div class="overview-expand">
+          <h2>Overview</h2>
+          <img
+            src="../../../assets/expand.svg"
+            (click)="toggleShowOverview()"
+          />
         </div>
+        <p class="overview-p" *ngIf="showOverview">
+          {{ informations.overview }}
+        </p>
+      </div>
     </div>
-   
-    <div *ngIf="seasons" class="seasons">
-        <h1>Seasons and Episodes</h1>
-        <app-seasons 
-        *ngFor = "let season of seasons"
-        [season] = "season"
-        ></app-seasons>
-    </div>
-  
+  </div>
+
+  <div class="cast">
+    <h2>Cast & Crew</h2>
+    <app-cast></app-cast>
+  </div>
+
+  <div *ngIf="seasons" class="seasons">
+    <h2>Seasons and Episodes</h2>
+    <app-seasons *ngFor="let season of seasons" [season]="season"></app-seasons>
+  </div>
 </div>

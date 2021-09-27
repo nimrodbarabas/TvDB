@@ -1,0 +1,6 @@
+<div *ngIf="cast" class="container">
+    <img *ngIf="cast.profile_path" class="img" src="{{baseUrl}}{{cast.profile_path}}">
+    <img *ngIf="!cast.profile_path" class="img" src="https://zcms-rubais.softplace.eu/images/2000X3000_noimage.gif">
+    <p class="original-name">{{cast.original_name}}</p>
+    <p class="name">{{cast.name}}</p>
+</div>

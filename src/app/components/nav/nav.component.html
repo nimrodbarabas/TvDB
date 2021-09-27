@@ -1,10 +1,26 @@
-<div class="container">
-    <div class="banner-nav">
-        <form>
-            <input class="nav-input" type="text"  id="text" placeholder="search" >
-            <input class="nav-button" type="submit" id="search" value="Search">
-        </form>
+<div class="container" >
+    <div class="banner-nav" [style.background-color]="backgroundColorToggle? 'black' : null" >
+        <div class="form">
+            <div *ngIf="showNav" class="form-nav">
+                <form   class="form-control" >
+                    <input   (focus)="toggleShowBackground()"  [(ngModel)]="text" type="text" name="text"  id="text" placeholder="Search" >  
+                    <img class="search-btn" src="../../assets/close_white.svg" (click)="toggleHideBackground()"/>
+                </form>
+               
+            </div>
+         
+          
+            <img *ngIf="!backgroundColorToggle && !showNav" class="search-btn" src="../../assets/search_white.svg" (click)="toggleShowNav()"/>
+            <img *ngIf="backgroundColorToggle && !showNav" class="search-btn" src="../../assets/search_white.svg" (click)="toggleShowNav()"/>
+        </div>
+      
         <a class="banner-link" routerLink="/"><h2>TvDB</h2></a>
-        
+       
     </div>
+
+    <div *ngIf="text && showNav && backgroundColorToggle" class="form-search">
+        <app-nav-search  (onSearch)="search($event)" [text]="text"></app-nav-search>
+       
+    </div>
+    
 </div>

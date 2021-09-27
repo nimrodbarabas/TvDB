@@ -1,0 +1,38 @@
+<div class="container" (click)="navigate()">
+  <img
+    *ngIf="item.poster_path"
+    class="img"
+    [ngStyle]="{ width: '50px' }"
+    src="{{ baseUrl }}{{ item.poster_path }}"
+    alt="poster"
+  />
+  <img
+    *ngIf="!item.poster_path"
+    [ngStyle]="{ width: '50px' }"
+    class="img"
+    src="https://zcms-rubais.softplace.eu/images/2000X3000_noimage.gif"
+  />
+
+  <div class="text">
+    <div class="header">
+      <div *ngIf="item.name; then name; else title" class="title"></div>
+      <ng-template #name> {{ item.name | slice: 0:20 }}</ng-template>
+      <ng-template #title>{{ item.title | slice: 0:20 }} </ng-template>
+      <div *ngIf="item.release_date; then date; else airDate"></div>
+
+      <ng-template #date>
+        <div class="date">
+          - {{ item.release_date | slice: 0:4 }}
+        </div></ng-template
+      >
+      <ng-template #airDate
+        ><div class="date">
+          - {{ item.first_air_date | slice: 0:4 }}
+        </div></ng-template
+      >
+      <ng-template
+        [ngIf]="!item.release_date && !item.first_air_date"
+      ></ng-template>
+    </div>
+  </div>
+</div>

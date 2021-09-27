@@ -11,8 +11,12 @@
     
         </div>
         <div class="more">
-            <p class="details">More details</p>
+            <p (click)="onClick()" class="details">More details</p>
         </div>
        
     </div>
+    <div  (click)="closeModal()" *ngIf="showModal" >
+        <app-modal [episode]="episode" class="modal"></app-modal>
+    </div>
+    
 </div>

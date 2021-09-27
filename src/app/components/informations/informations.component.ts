@@ -1,47 +1,55 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute ,Router  , ParamMap} from '@angular/router';
-import { RowService } from 'src/app/services/row.service';
-import { InformationService } from 'src/app/services/information.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Season } from 'src/app/interfaces/Season';
-
+import { ModalService } from 'src/app/services/modal.service';
 import { Subscription } from 'rxjs';
-
+import { Episodes } from 'src/app/interfaces/Episodes';
+import { Genre } from 'src/app/interfaces/genre';
+import { TvDBService } from 'src/app/services/tv-db.service';
 
 @Component({
   selector: 'app-informations',
   templateUrl: './informations.component.html',
-  styleUrls: ['./informations.component.css']
+  styleUrls: ['./informations.component.css'],
 })
 export class InformationsComponent implements OnInit {
-  baseUrl  :string = "https://image.tmdb.org/t/p/original"
-  informations !:any;
-  genre :string[] = []
-  seasons !: Season[] 
-
-  showOverview : boolean = false
-  
+  baseUrl: string = 'https://image.tmdb.org/t/p/original';
+  informations: any = undefined;
+  genres: Genre[] = [];
+  seasons!: Season[];
+  subscription!: Subscription;
+  modalShow: boolean = false;
+  showOverview: boolean = false;
+  modalContent!: Episodes;
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
-    private informationService : InformationService,
-   
-    )
-     { }
+    private modalService: ModalService,
+    private tvDbService: TvDBService
+  ) {}
 
   ngOnInit() {
+    this.tvDbService.getInformations(this.router.url).subscribe((res: any) => {
+      this.seasons = res.seasons;
 
-     
-      this.informationService.getInformations(this.router.url).subscribe((res:any)=>{
-        this.seasons=res.seasons
-      res.genres.map((el:any)=>this.genre.push(el.name))
-      this.informations = res
-      console.log(this.seasons)
-    })
+      this.genres = res.genres;
+      this.informations = res;
+    });
+    this.subscription = this.modalService
+      .onToggle()
+      .subscribe((value) => (this.modalShow = value));
   }
-    toggleShowOverview(){
-     
-     this.showOverview = !this.showOverview
-    }
+  toggleShowOverview() {
+    this.showOverview = !this.showOverview;
+  }
 
-  
-
+  selectGenre(genre: Genre) {
+    let type = this.router.isActive('/movie', false) ? 'movie' : 'tv';
+    this.router.navigate(['/search'], {
+      queryParams: {
+        genre: genre.id,
+        category: type,
+      },
+    });
+  }
 }

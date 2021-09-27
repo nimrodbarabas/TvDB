@@ -1,0 +1,19 @@
+<div class="main">
+    <div class="container" (click)="search('tv')">
+        <p class="name">{{text}}</p>
+        <p class="category">Search in TV-series</p>
+    </div>
+    <div class="container" (click)="search('movie')">
+        <p class="name">{{text}}</p>
+        <p class="category">Search in movies</p>
+    </div>
+    <div class="container">
+        <p class="category">Top:</p>
+    </div>
+    <div *ngIf="searchItems" class="container-items">
+        <app-nav-search-item
+        *ngFor="let item of searchItems"
+        [item]=item
+        ></app-nav-search-item>
+    </div>
+</div>

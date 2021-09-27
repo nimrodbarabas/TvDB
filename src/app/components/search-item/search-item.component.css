@@ -1,0 +1,40 @@
+.main {
+  background-color: #111;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+
+.main :hover {
+  background-color: #181818;
+}
+.poster {
+  max-height: 200px;
+  object-fit: contain;
+}
+.description {
+  padding: 10px;
+}
+.description-h2 {
+  font-weight: 400;
+  color: yellow;
+}
+.description-p {
+  font-size: small;
+  color: lightgray;
+  font-style: italic;
+}
+.description-text {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: smaller;
+}
+@media screen and (max-width: 650px) {
+  .main {
+    max-height: 400px;
+  }
+  .poster {
+    align-self: center;
+  }
+}

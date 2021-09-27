@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RowService } from './row.service';
+import { UiInputService } from './ui-input.service';
 
-describe('RowService', () => {
-  let service: RowService;
+describe('UiInputService', () => {
+  let service: UiInputService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RowService);
+    service = TestBed.inject(UiInputService);
   });
 
   it('should be created', () => {

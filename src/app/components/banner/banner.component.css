@@ -4,9 +4,11 @@
   height: 448px;
   background-position: center;
   background-size: cover;
-  background-image: url("https://image.tmdb.org/t/p/original/gFZriCkpJYsApPZEF3jhxL4yLzG.jpg");
+
   z-index: 2;
   position: relative;
+  transition-timing-function: ease;
+  transition-duration: 2s;
 }
 
 .banner-content {
@@ -20,12 +22,16 @@
   font-size: 3rem;
   font-weight: 800;
 }
+.btn {
+  margin-top: 10px;
+}
 
 .banner-description {
   width: 45re;
   line-height: 1.3;
-  padding-top: 1rem;
+  margin-top: 30px;
   font-size: 0.8rem;
   max-width: 360px;
   height: 80px;
+  font-weight: bold;
 }

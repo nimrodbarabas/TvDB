@@ -1,16 +1,25 @@
-<header *ngIf="banner" class="banner">
-
-  
-    <div class="banner-content">
-        <div>   <h1 class="banner-title">{{banner.name}}</h1></div>
-     
-        <button class="btn " >Check</button>
-        <h1 class="banner-description">
-            {{banner.overview | slice:0:150}} ...
-        </h1>
+<header
+  *ngIf="currentBanner"
+  class="banner"
+  [ngStyle]="{
+    'background-image':
+      'url(' + baseUrl + currentBanner[index].backdrop_path + ')'
+  }"
+>
+  <div class="banner-content">
+    <div>
+      <h1 class="banner-title">
+        {{
+          currentBanner[index].name
+            ? (currentBanner[index].name | slice: 0:24)
+            : (currentBanner[index].title | slice: 0:24)
+        }}
+      </h1>
     </div>
-   
- 
-    
-   
+
+    <button class="btn" (click)="clicked()">Check</button>
+    <h1 class="banner-description">
+      {{ currentBanner[index].overview | slice: 0:150 }} ...
+    </h1>
+  </div>
 </header>

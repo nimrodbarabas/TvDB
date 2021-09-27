@@ -1,25 +1,26 @@
-const API_KEY = "62c6a9d191e328cb5ff5ea4f78562f74";
+//const API_KEY = "62c6a9d191e328cb5ff5ea4f78562f74";
+import { environment } from 'src/environments/environment';
 
 const requests = {
   fetchTrending: `
-  https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=en-US`,
+  ${environment.BASE_URL}/trending/all/week?api_key=${environment.API_KEY}&language=en-US`,
   fetchNetflixOriginals: `
-  https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&with_networks=213`,
+  ${environment.BASE_URL}/discover/tv?api_key=${environment.API_KEY}&with_networks=213`,
   fetchTopRated: `
-  https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`,
+  ${environment.BASE_URL}/movie/top_rated?api_key=${environment.API_KEY}&language=en-US`,
   fetchTopRatedTvShow: `
-  https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US`,
+  ${environment.BASE_URL}/tv/top_rated?api_key=${environment.API_KEY}&language=en-US`,
 
   fetchActionMovies: `
-  https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=28`,
+  ${environment.BASE_URL}/discover/movie?api_key=${environment.API_KEY}&with_genres=28`,
   fetchComedyMovies: `
-  https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=35`,
+  ${environment.BASE_URL}/discover/movie?api_key=${environment.API_KEY}&with_genres=35`,
   fetchHorrorMovies: `
-  https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27`,
+  ${environment.BASE_URL}/discover/movie?api_key=${environment.API_KEY}&with_genres=27`,
   fetchRomanceMovies: `
-  https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=10749`,
+  ${environment.BASE_URL}/discover/movie?api_key=${environment.API_KEY}&with_genres=10749`,
   fetchDocumentariesMovies: `
-  https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=99`,
+  ${environment.BASE_URL}/discover/movie?api_key=${environment.API_KEY}&with_genres=99`,
 };
 
 export default requests;

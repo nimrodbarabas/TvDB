@@ -1,6 +1,8 @@
-
-    
-    <a (click)="navigate()"><img [ngStyle]="{'width' : size}" class="img" src="{{baseUrl}}{{rowItem.poster_path}}" alt="rowItem.title">
-    </a>
-    
-
+<a (click)="navigate()"
+  ><img
+    [ngStyle]="{ width: size }"
+    class="img"
+    src="{{ baseUrl }}{{ rowItem.poster_path }}"
+    alt="rowItem.title"
+  />
+</a>

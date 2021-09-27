@@ -1,3 +1,5 @@
+
+
 <div *ngIf="season" class="season">
    
     <div class="header">
@@ -9,6 +11,9 @@
       <app-episode 
       *ngFor = "let episode of episodes"
       [episode] = "episode"
+      (onToggleModal) = "onToggleModal()"
       ></app-episode>
     </div>
+   
+  
 </div>

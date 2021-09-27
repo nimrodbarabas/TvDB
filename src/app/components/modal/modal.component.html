@@ -1,0 +1,19 @@
+<div *ngIf="episode" class="container">
+  <img
+    *ngIf="episode.still_path"
+    src="{{ baseUrl }}{{ episode.still_path }}"
+    class="img"
+    alt="img"
+  />
+  <img
+    *ngIf="!episode.still_path"
+    src="https://www.ukcarline.co.uk/news/wp-content/plugins/gallery-images/assets/images/admin_images/No-image-found.jpg"
+    class="img"
+    alt="img"
+  />
+  <div class="text">
+    <h2>Overview</h2>
+    <p *ngIf="episode.overview">{{ episode.overview }}</p>
+    <p *ngIf="!episode.overview">Overview is not available</p>
+  </div>
+</div>

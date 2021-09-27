@@ -1,0 +1,6 @@
+<div *ngIf="response" class="main">
+  <app-cast-item
+    *ngFor="let cast of response.cast"
+    [cast]="cast"
+  ></app-cast-item>
+</div>

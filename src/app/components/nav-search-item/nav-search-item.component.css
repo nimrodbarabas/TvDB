@@ -1,0 +1,31 @@
+.main {
+}
+
+.container {
+  display: flex;
+}
+.container:hover {
+  background-color: #181818;
+}
+
+.text {
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  display: flex;
+}
+
+.img {
+}
+.img-img {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+.date {
+  margin-left: 5px;
+}

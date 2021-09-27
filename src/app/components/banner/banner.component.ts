@@ -1,25 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { BannerService } from 'src/app/services/banner.service';
 import { Subscription } from 'rxjs';
-import { Banner } from 'src/app/interfaces/Banner';
+import { Banner, BannerResponse } from 'src/app/interfaces/Banner';
+import { TvDBService } from 'src/app/services/tv-db.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.css']
+  styleUrls: ['./banner.component.css'],
 })
 export class BannerComponent implements OnInit {
-  subscription !: Subscription;
-  banner !: any
-  baseUrl  = 'https://image.tmdb.org/t/p/original/gFZriCkpJYsApPZEF3jhxL4yLzG.jpg';
-
-  constructor(private bannerService : BannerService) { }
+  subscription!: Subscription;
+  currentBanner!: Banner[];
+  baseUrl: string = 'https://image.tmdb.org/t/p/original/';
+  arrayLength: number = 0;
+  index: number = 0;
+  constructor(private tvDbService: TvDBService, private router: Router) {}
 
   ngOnInit(): void {
-    this.bannerService.getMovies().subscribe((res:any) =>{ 
-     
-      this.banner=res.results[0] 
-   })
-    
+    this.tvDbService.getBannerMovies().subscribe((res: BannerResponse) => {
+      this.currentBanner = res.results;
+      this.arrayLength = res.results.length;
+    });
+    setInterval(() => {
+      if (this.index === this.arrayLength) {
+        this.index = 0;
+      } else {
+        this.index++;
+      }
+    }, 5000);
   }
 
+  clicked() {
+    let link = [
+      `/${this.currentBanner[this.index].media_type}`,
+      this.currentBanner[this.index].id,
+    ];
+    this.router.navigate(link);
+  }
 }

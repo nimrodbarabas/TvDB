@@ -1,0 +1,21 @@
+.container {
+  padding: 20px;
+  position: absolute;
+  overflow: hidden;
+  background-color: white;
+  color: black;
+  max-width: 300px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  align-self: center;
+  max-width: 300px;
+  object-fit: fill;
+}
+
+.text {
+  margin-top: 10px;
+}

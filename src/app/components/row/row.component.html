@@ -1,13 +1,11 @@
-
-    <h2 *ngIf="rowItems">{{title}}</h2>
-    <div class="main-row" *ngIf="rowItems">
-        <app-row-items *ngFor="let rowItem of rowItems.results"
-        [rowItem] = "rowItem"
-        class="row-item"
-        [size]="size"
-        [type]="type"
-        >
-
-        </app-row-items>
-    </div>
-
+<h2 *ngIf="rowItems">{{ title }}</h2>
+<div class="main-row" *ngIf="rowItems">
+  <app-row-items
+    *ngFor="let rowItem of rowItems"
+    [rowItem]="rowItem"
+    class="row-item"
+    [size]="size"
+    [type]="type"
+  >
+  </app-row-items>
+</div>

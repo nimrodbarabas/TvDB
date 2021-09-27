@@ -1,0 +1,33 @@
+<div *ngIf="response" class="main">
+  <div class="main-text">
+    <div class="search-info">
+      <p class="search">Search:</p>
+      <p class="query">{{ genre ? genre.name : query }}</p>
+    </div>
+    <div class="search-total">
+      <p class="total-results">Total Results({{ response.total_results }})</p>
+      <p class="total-pages">Total Pages({{ response.total_pages }})</p>
+    </div>
+  </div>
+  <div *ngIf="response.total_results != 0" class="pagination">
+    <p>Page {{ currentPage }} of {{ response.total_pages }}</p>
+    <div class="pagination-btn">
+      <img
+        src="../../../assets/navigate_before.svg"
+        (click)="onClickBefore()"
+      />
+      <img src="../../../assets/navigate_next.svg" (click)="onClickNext()" />
+    </div>
+  </div>
+  <div *ngIf="response.total_results === 0" class="pagination">
+    <p>No results found</p>
+  </div>
+  <div class="container">
+    <app-search-item
+      class="item-container"
+      *ngFor="let item of response.results"
+      [item]="item"
+      [type]="type"
+    ></app-search-item>
+  </div>
+</div>

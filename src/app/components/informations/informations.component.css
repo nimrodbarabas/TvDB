@@ -3,8 +3,6 @@
   margin-left: 20px;
   margin-right: 40px;
   max-width: 100%;
-
-  position: relative;
 }
 
 .header {
@@ -26,24 +24,39 @@
 }
 
 .header-text h1 {
-  font-size: 5vw;
-
   align-items: center;
 }
 
 .header-text span {
   color: grey;
   margin-left: 5px;
-  font-size: 3vw;
+
   font-weight: lighter;
 }
 
+.title {
+  font-size: 5rem;
+}
+.date {
+  font-size: 2rem;
+}
+
+.container-genre {
+  margin-top: 5px;
+}
+
 .text-genre {
+  display: inline-block;
   font-style: italic;
+  cursor: pointer;
+}
+.text-genre:hover {
+  text-decoration: underline;
 }
 
 .status,
-.nextEpisode {
+.nextEpisode,
+.rating {
   display: flex;
   margin-top: 40px;
 }
@@ -68,13 +81,19 @@
 }
 
 .seasons {
-  margin-top: 100px;
+  margin-top: 40px;
+}
+
+.cast {
+  margin-top: 40px;
 }
 
 @media screen and (max-width: 900px) {
   .header {
     flex-direction: column;
   }
+
+  /*position fixed */
   .main {
     padding-top: 80px;
     margin-left: 0px;
@@ -96,5 +115,15 @@
     margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
+  }
+  .cast {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+  .date {
+    font-size: 1rem;
   }
 }

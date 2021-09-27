@@ -9,9 +9,10 @@ import { RowComponent } from './components/row/row.component';
 import { RowItemsComponent } from './components/row-items/row-items.component';
 import { MoviesModule } from './movies/movies.module';
 import { NavComponent } from './components/nav/nav.component';
-
-
-
+import { FormsModule } from '@angular/forms';
+import { NavSearchComponent } from './components/nav-search/nav-search.component';
+import { NavSearchItemComponent } from './components/nav-search-item/nav-search-item.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,18 +22,18 @@ import { NavComponent } from './components/nav/nav.component';
     RowComponent,
     RowItemsComponent,
     NavComponent,
-  
-
+    NavSearchComponent,
+    NavSearchItemComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     MoviesModule,
     AppRoutingModule,
-   
-   
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
